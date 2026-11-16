@@ -4,8 +4,10 @@ import com.javanauta.agendamento_notificacao_api.business.mapper.IAgendamentoMap
 import com.javanauta.agendamento_notificacao_api.controller.dto.in.AgendamentoRecord;
 import com.javanauta.agendamento_notificacao_api.controller.dto.out.AgendamentoRecordOut;
 
+import com.javanauta.agendamento_notificacao_api.infrastructure.entities.Agendamento;
 import com.javanauta.agendamento_notificacao_api.infrastructure.exception.NotFoundException;
 import com.javanauta.agendamento_notificacao_api.infrastructure.repositories.AgendamentoRepository;
+import jakarta.persistence.Id;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,14 @@ public class AgendamentoService {
     public AgendamentoRecordOut buscarAgendamentoPorId(Long id){
         return agendamentoMapper.paraOut(repository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Id não encontrado")));
+    }
+
+    public void cancelarAgendamento(Long id){
+        Agendamento agendamento = repository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Id não encontrado"));
+        repository.save(
+        agendamentoMapper.paraEntityCancelamento(agendamento));
+
     }
 
 }
