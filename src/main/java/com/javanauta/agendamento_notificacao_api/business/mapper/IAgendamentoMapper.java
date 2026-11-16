@@ -16,4 +16,8 @@ public interface IAgendamentoMapper {
 
     AgendamentoRecordOut paraOut(Agendamento agendamento);
 
+    @Mapping(target = "dataHoraModificacao", expression = "java(LocalDateTime.now())")
+    @Mapping(target = "statusNotificacao", expression = "java(StatusNotificacaoEnum.CANCELADO)")
+    Agendamento paraEntityCancelamento(Agendamento agendamento);
+
 }
