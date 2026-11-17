@@ -1,26 +1,21 @@
-package com.javanauta.agendamento_notificacao_api.controller;
+package com.javanauta.agendamento_notificacao_api.business;
 
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.javanauta.agendamento_notificacao_api.business.AgendamentoService;
 import com.javanauta.agendamento_notificacao_api.business.mapper.IAgendamentoMapper;
 import com.javanauta.agendamento_notificacao_api.controller.dto.in.AgendamentoRecord;
 import com.javanauta.agendamento_notificacao_api.controller.dto.out.AgendamentoRecordOut;
 import com.javanauta.agendamento_notificacao_api.infrastructure.entities.Agendamento;
 import com.javanauta.agendamento_notificacao_api.infrastructure.enums.StatusNotificacaoEnum;
 import com.javanauta.agendamento_notificacao_api.infrastructure.repositories.AgendamentoRepository;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
